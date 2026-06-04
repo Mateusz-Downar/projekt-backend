@@ -10,12 +10,22 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddControllers();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("FrontEndPolicy", policy =>
+    {
+        policy.AllowAnyOrigin()  
+              .AllowAnyHeader()  
+              .AllowAnyMethod(); 
+    });
+});
+
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddHostedService<RabbitMqWorker>(); // To odpala słuchacza RabbitMQ w tle
 
 var app = builder.Build();
-
+app.UseCors("FrontEndPolicy");
 
 app.UseSwagger();
 app.UseSwaggerUI();
