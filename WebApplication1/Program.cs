@@ -22,7 +22,7 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-builder.Services.AddHostedService<RabbitMqWorker>(); // To odpala słuchacza RabbitMQ w tle
+builder.Services.AddHostedService<RabbitMqWorker>(); 
 
 var app = builder.Build();
 app.UseCors("FrontEndPolicy");
