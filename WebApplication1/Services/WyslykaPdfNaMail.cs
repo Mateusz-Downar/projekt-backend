@@ -31,7 +31,7 @@ namespace projektBackend.Services
             var smtpClient = new SmtpClient("smtp-relay.brevo.com")
             {
                 Port = 587,
-                Credentials = new NetworkCredential("domena zapisales na fb", "klucz zapisales na fb"),
+                Credentials = new NetworkCredential("tu domena jest na fb", "tu klucz jest na fb"),
                 EnableSsl = true,
             };
 
